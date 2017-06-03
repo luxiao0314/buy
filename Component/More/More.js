@@ -7,14 +7,22 @@ import {
     AppRegistry, Image,
     StyleSheet,
     Text, TouchableOpacity,
-    View, Platform
+    View, Platform, ScrollView
 } from 'react-native';
+
+const CommonCell = require("../More/CommonCell");
 
 export default class More extends Component {
     render() {
         return (
             <View style={styles.container}>
                 {this.renderNavBar()}
+
+                <ScrollView>
+                    <View style={{marginTop: 20}}>
+                        <CommonCell title="扫一扫"/>
+                    </View>
+                </ScrollView>
             </View>
         );
     }
