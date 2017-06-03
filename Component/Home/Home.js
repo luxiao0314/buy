@@ -10,7 +10,7 @@ import {
     View,
     TouchableOpacity,
     TextInput,
-    Platform, Image
+    Platform, Image, ScrollView
 } from 'react-native';
 
 let HomeDetail = require("../Home/HomeDetail");
@@ -23,6 +23,10 @@ export default class Home extends Component {
             <View style={styles.container}>
                 {/*首页的导航条*/}
                 {this.renderNavBar()}
+                {/*内容部分*/}
+                <ScrollView>
+
+                </ScrollView>
             </View>
         );
     }
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
         // 设置圆角
         borderRadius: 14,
         // 内左边距
-        paddingLeft: 10,
+        paddingLeft: 15,
         alignItems:'center'
     },
     navBarStyle: {

@@ -2,32 +2,42 @@
  * Created by lucio on 02/06/2017.
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-    AppRegistry,
+    AppRegistry, Image,
     StyleSheet,
-    Text,
-    View
+    Text, TouchableOpacity,
+    View, Platform
 } from 'react-native';
 
 export default class More extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    More
-                </Text>
+                {this.renderNavBar()}
             </View>
         );
+    }
+
+    // 导航条
+    renderNavBar() {
+        return (
+            <View style={styles.navOutViewStyle}>
+                <Text style={{color: 'white', fontSize: 16, fontWeight: 'bold'}}>更多</Text>
+                <TouchableOpacity onPress={() => {
+                    alert('点了!')
+                }} style={styles.rightViewStyle}>
+                    <Image source={{uri: 'icon_mine_setting'}} style={styles.navImageStyle}/>
+                </TouchableOpacity>
+            </View>
+        )
     }
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#e8e8e8',
     },
     welcome: {
         fontSize: 20,
@@ -38,6 +48,28 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#333333',
         marginBottom: 5,
+    },
+    navImageStyle: {
+        width: Platform.OS === 'ios' ? 28 : 24,
+        height: Platform.OS === 'ios' ? 28 : 24,
+    },
+
+    rightViewStyle: {
+        // 绝对定位
+        position: 'absolute',
+        right: 10,
+        bottom: Platform.OS === 'ios' ? 15 : 13
+    },
+    navOutViewStyle: {
+        height: Platform.OS === 'ios' ? 64 : 44,
+        backgroundColor: 'rgba(255,96,0,1.0)',
+
+        // 设置主轴的方向
+        flexDirection: 'row',
+        // 垂直居中 ---> 设置侧轴的对齐方式
+        alignItems: 'center',
+        // 主轴方向居中
+        justifyContent: 'center'
     },
 });
 
