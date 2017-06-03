@@ -17,6 +17,8 @@ let HomeDetail = require("../Home/HomeDetail");
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
+var TopView = require('../Home/TopView');
+
 export default class Home extends Component {
     render() {
         return (
@@ -25,7 +27,8 @@ export default class Home extends Component {
                 {this.renderNavBar()}
                 {/*内容部分*/}
                 <ScrollView>
-
+                    {/*头部view*/}
+                    <TopView/>
                 </ScrollView>
             </View>
         );
