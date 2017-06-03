@@ -28,15 +28,17 @@ export default class HeaderView extends Component {
 
     renderTopView() {
         return (
-            <View style={styles.topViewStyle}>
-                <Image source={{uri: 'see'}} style={styles.leftIconStyle}/>
-                <View style={styles.centerViewStyle}>
-                    <Text style={{fontSize: 18, color: 'white', fontWeight: 'bold'}}>小码哥电商</Text>
-                    <Image source={{uri: 'avatar_vip'}} style={{width: 17, height: 17}}/>
+            <TouchableOpacity activeOpacity={0.5} onPress={() => alert("小码哥电商")}>
+                <View style={styles.topViewStyle}>
+                    <Image source={{uri: 'see'}} style={styles.leftIconStyle}/>
+                    <View style={styles.centerViewStyle}>
+                        <Text style={{fontSize: 18, color: 'white', fontWeight: 'bold'}}>小码哥电商</Text>
+                        <Image source={{uri: 'avatar_vip'}} style={{width: 17, height: 17}}/>
+                    </View>
+                    {/*--右边的箭头--*/}
+                    <Image source={{uri: 'icon_cell_rightArrow'}} style={{width: 8, height: 13, marginRight: 8}}/>
                 </View>
-                {/*--右边的箭头--*/}
-                <Image source={{uri: 'icon_cell_rightArrow'}} style={{width: 8, height: 13, marginRight: 8}}/>
-            </View>
+            </TouchableOpacity>
         )
     }
 
