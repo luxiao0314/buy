@@ -22,6 +22,29 @@ export default class More extends Component {
                     <View style={{marginTop: 20}}>
                         <CommonCell title="扫一扫"/>
                     </View>
+
+                    <View style={{marginTop: 20}}>
+                        <CommonCell
+                            title="省流量模式"
+                            isSwitch={true}/>
+                        <CommonCell title="消息提醒"/>
+                        <CommonCell title="邀请好友使用码团"/>
+                        <CommonCell
+                            title="清空缓存"
+                            rightTitle="1.99M"/>
+                    </View>
+
+                    <View style={{marginTop: 20}}>
+                        <CommonCell title="问卷调查"/>
+                        <CommonCell title="支付帮助"/>
+                        <CommonCell title="网络诊断"/>
+                        <CommonCell title="关于码团"/>
+                        <CommonCell title="我要应聘"/>
+                    </View>
+
+                    <View style={{marginTop: 20}}>
+                        <CommonCell title="精品应用"/>
+                    </View>
                 </ScrollView>
             </View>
         );

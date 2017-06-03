@@ -12,12 +12,16 @@ import {
 
 class CommonCell extends Component {
 
-    constructor() {
-        super();
+    //设置props的默认属性
+    static defaultProps = {
+        title: '',  // 标题
+        isSwitch: false, // 是否展示开关
+        rightTitle: '',
+    };
+
+    constructor(props) {
+        super(props);
         this.state = {
-            title: '',  // 标题
-            isSwitch: false, // 是否展示开关
-            rightTitle: '',
             isOn: false,
         }
     }
@@ -25,7 +29,7 @@ class CommonCell extends Component {
     render() {
         return (
             <TouchableOpacity onPress={() => {
-                alert('点了')
+                alert(this.props.title)
             }}>
                 <View style={styles.container}>
                     {/*左边*/}
@@ -38,9 +42,9 @@ class CommonCell extends Component {
     }
 
     renderRightView() {
-        if (this.state.isSwitch) {
+        if (this.props.isSwitch) {
             return (
-                <Switch value={this.state.isOn}
+                <Switch value={this.state.isOn === true}
                         style={{marginRight: 8}}
                         onValueChange={() => {
                             this.setState({
@@ -60,10 +64,10 @@ class CommonCell extends Component {
     }
 
     rightTitle() {
-        if (this.state.rightTitle.length === 0) {
+        if (this.props.rightTitle.length > 0) {
             return (
                 <Text style={{color: 'gray', marginRight: 3}}>
-                    {this.state.rightTitle}
+                    {this.props.rightTitle}
                 </Text>
             );
         }
