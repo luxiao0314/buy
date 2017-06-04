@@ -16,6 +16,10 @@ import {
 let HomeDetail = require("../Home/HomeDetail");
 let MiddleView = require("../Home/MiddleView");
 const TopView = require('../Home/TopView');
+const MiddleBottomView = require('../Home/MiddleBottomView');
+const ShopCenter = require('../Home/ShopCenter');
+const ShopCenterDetail = require('../Home/ShopCenterDetail');
+const GeustYouLike = require('../Home/GeustYouLike');
 
 const Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
@@ -32,9 +36,34 @@ export default class Home extends Component {
                     <TopView/>
                     {/*中间的内容*/}
                     <MiddleView/>
+                    {/*中间下半部分的内容*/}
+                    <MiddleBottomView
+                        popTopHome={(data) => {
+                            this.pushToDetail(data)
+                        }}
+                    />
+                    <ShopCenter popToHomeView={(url) => this.pushToShopCenterDetail(url)}/>
+                    {/*猜你喜欢*/}
+                    <GeustYouLike/>
                 </ScrollView>
             </View>
         );
+    }
+
+
+    // 跳转到购物中心详情页
+    pushToShopCenterDetail(url) {
+        this.props.navigator.push(
+            {
+                component: ShopCenterDetail, // 要跳转的版块
+                passProps: {'url': this.dealWithUrl(url)}
+            }
+        );
+    }
+
+    // 处理URL
+    dealWithUrl(url) {
+        return url.replace('imeituan://www.meituan.com/web/?url=', '');
     }
 
     renderNavBar() {
@@ -90,7 +119,7 @@ const styles = StyleSheet.create({
         borderRadius: 14,
         // 内左边距
         paddingLeft: 15,
-        alignItems:'center'
+        alignItems: 'center'
     },
     navBarStyle: {
         marginTop: Platform.OS === 'ios' ? 18 : 0,
@@ -107,10 +136,10 @@ const styles = StyleSheet.create({
         width: Platform.OS === 'ios' ? 28 : 24,
         height: Platform.OS === 'ios' ? 28 : 24
     },
-    rightNavViewStyle:{
-        flexDirection:'row',
-        height:64,
-        alignItems:'center'
+    rightNavViewStyle: {
+        flexDirection: 'row',
+        height: 64,
+        alignItems: 'center'
     }
 });
 
