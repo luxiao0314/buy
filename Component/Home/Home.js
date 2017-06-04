@@ -14,10 +14,11 @@ import {
 } from 'react-native';
 
 let HomeDetail = require("../Home/HomeDetail");
-var Dimensions = require('Dimensions');
-var {width, height} = Dimensions.get('window');
+let MiddleView = require("../Home/MiddleView");
+const TopView = require('../Home/TopView');
 
-var TopView = require('../Home/TopView');
+const Dimensions = require('Dimensions');
+var {width, height} = Dimensions.get('window');
 
 export default class Home extends Component {
     render() {
@@ -29,6 +30,8 @@ export default class Home extends Component {
                 <ScrollView>
                     {/*头部view*/}
                     <TopView/>
+                    {/*中间的内容*/}
+                    <MiddleView/>
                 </ScrollView>
             </View>
         );
